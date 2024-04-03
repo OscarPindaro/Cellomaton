@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckkurbc6ti5xw"]
+
+[ext_resource type="PackedScene" uid="uid://dvdckygrhbdv8" path="res://scenes/model/cell.tscn" id="1_n77ih"]
+[ext_resource type="Script" path="res://scenes/movement/random_movement.gd" id="2_icev5"]
+
+[node name="main" type="Node2D"]
+
+[node name="CellBody" parent="." instance=ExtResource("1_n77ih")]
+position = Vector2(605, 324)
+
+[node name="RandomMovement" type="Node" parent="CellBody"]
+script = ExtResource("2_icev5")
+look_at = false
