@@ -38,7 +38,7 @@ func _ready():
 func _on_control_step():
 	body.velocity = Vector2(randf_range(-1,1), randf_range(-1,1)).normalized() * linear_velocity
 
-func _process(delta):
+func _process(_delta):
 	body.move_and_slide()
 	if look_at:
 		body.look_at(body.velocity)

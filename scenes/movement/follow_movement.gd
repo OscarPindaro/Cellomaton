@@ -8,7 +8,7 @@ func _ready():
 	super._ready()
 	assert(target != null, "Target of the Follow Movement should not be Null")
 
-func _process(delta):
+func _process(_delta):
 	var direction : Vector2 = (target.global_position - body.position).normalized()
 	body.velocity = direction*linear_velocity
 	body.move_and_slide()

@@ -6,7 +6,7 @@ class_name MouseFollowMovement
 func _ready():
 	super._ready()
 
-func _process(delta):
+func _process(_delta):
 	var mouse_position = body.get_global_mouse_position()
 	var direction : Vector2 = (mouse_position - body.position).normalized()
 	body.velocity = direction*linear_velocity
