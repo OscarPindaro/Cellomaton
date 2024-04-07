@@ -8,6 +8,7 @@ size = Vector2(115, 115)
 [node name="CellBody" type="CharacterBody2D"]
 
 [node name="Icon" type="Sprite2D" parent="."]
+rotation = 1.5708
 texture = ExtResource("1_lrp1i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
