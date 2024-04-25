@@ -1,3 +1,4 @@
+@tool
 extends Movement
 class_name RandomMovement
 # a movement that moves a kinematic body in a random fashion

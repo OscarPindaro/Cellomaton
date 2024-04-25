@@ -13,3 +13,21 @@ config_version=5
 config/name="Cellomaton"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+ClassUtils="*res://addons/enhanced_common/scripts/utils/class_utils.gd"
+NodeBinder="*res://addons/enhanced_common/scripts/node_binders/node_binder.gd"
+
+[editor]
+
+movie_writer/movie_file="/home/oscar/Video/godot/output.mp4"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/enhanced_common/plugin.cfg", "res://addons/enhanced_stat/plugin.cfg")
+
+[layer_names]
+
+2d_physics/layer_1="Prey"
+2d_physics/layer_2="Prey_Interactable"

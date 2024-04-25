@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="BaseStats" load_steps=2 format=3 uid="uid://roefuqaslc5y"]
+
+[ext_resource type="Script" path="res://scenes/Model/base_stats.gd" id="1_nssyq"]
+
+[resource]
+script = ExtResource("1_nssyq")
+health = 100.0
+energy = 100.0
+collision_layer = 1
+collision_mask = 2

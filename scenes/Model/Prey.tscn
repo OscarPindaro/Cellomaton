@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://n5v6s8tui8df"]
+
+[ext_resource type="Script" path="res://scenes/Model/Prey.gd" id="1_wvgtx"]
+[ext_resource type="PackedScene" uid="uid://dvdckygrhbdv8" path="res://scenes/Model/CellBody.tscn" id="2_7s2ic"]
+
+[node name="Prey" type="Node2D"]
+script = ExtResource("1_wvgtx")
+
+[node name="CellBody" parent="." instance=ExtResource("2_7s2ic")]

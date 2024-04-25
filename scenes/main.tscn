@@ -1,14 +1,47 @@
-[gd_scene load_steps=3 format=3 uid="uid://ckkurbc6ti5xw"]
+[gd_scene load_steps=4 format=3 uid="uid://ckkurbc6ti5xw"]
 
 [ext_resource type="PackedScene" uid="uid://dvdckygrhbdv8" path="res://scenes/Model/CellBody.tscn" id="1_n77ih"]
 [ext_resource type="Script" path="res://scenes/Movement/follow_movement.gd" id="2_iqrjm"]
+[ext_resource type="PackedScene" uid="uid://dhsjtgyyyftb8" path="res://scenes/Model/bush.tscn" id="3_6e4so"]
 
 [node name="main" type="Node2D"]
+metadata/movie_file = "/home/oscar/Video/godot/output.avi"
 
 [node name="CellBody" parent="." instance=ExtResource("1_n77ih")]
-position = Vector2(1013, 128)
+position = Vector2(562, 348)
 
-[node name="FollowMovement" type="Node" parent="." node_paths=PackedStringArray("target", "body")]
+[node name="FollowMovement" type="Node" parent="." node_paths=PackedStringArray("body")]
 script = ExtResource("2_iqrjm")
-target = NodePath("")
 body = NodePath("../CellBody")
+
+[node name="bush" parent="." instance=ExtResource("3_6e4so")]
+position = Vector2(14, 314)
+collision_layer = 2
+
+[node name="bush2" parent="." instance=ExtResource("3_6e4so")]
+position = Vector2(547, 638)
+collision_layer = 2
+
+[node name="bush3" parent="." instance=ExtResource("3_6e4so")]
+position = Vector2(1090, 329)
+collision_layer = 2
+
+[node name="bush4" parent="." instance=ExtResource("3_6e4so")]
+position = Vector2(565, 4)
+collision_layer = 2
+
+[node name="bush5" parent="." instance=ExtResource("3_6e4so")]
+position = Vector2(209, 650)
+collision_layer = 2
+
+[node name="bush6" parent="." instance=ExtResource("3_6e4so")]
+position = Vector2(942, 15)
+collision_layer = 2
+
+[node name="bush8" parent="." instance=ExtResource("3_6e4so")]
+position = Vector2(903, 640)
+collision_layer = 2
+
+[node name="bush7" parent="." instance=ExtResource("3_6e4so")]
+position = Vector2(187, 11)
+collision_layer = 2

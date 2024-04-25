@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="NeedsResource" load_steps=2 format=3 uid="uid://bn1rjupb47w65"]
+
+[ext_resource type="Script" path="res://scenes/Model/needs_resource.gd" id="1_2p58x"]
+
+[resource]
+script = ExtResource("1_2p58x")
+needs_dict = {
+"Health": 10.0
+}
