@@ -22,6 +22,32 @@ func _ready():
 func _process(delta):
 	pass
 
+func get_needs()-> Array[Dictionary]:
+	var needs_array = []
+	for need in needs:
+		need = need as Need
+		needs_array.append({"need_name":need.need_name, "value":need.value})
+	return needs_array
+
+func set_needs():
+	var found_needs = find_children("*", "Need") as Array[Need]
+	for need in found_needs:
+		if need not in needs:
+			needs.append(need)
+
+func _on_children_entered(node: Node):
+	if node is Need:
+		needs.append(node)
+		set_needs()
+	update_configuration_warnings()
+
+func _on_children_exited(node: Node):
+	if node in needs:
+		needs.erase(node)
+	# set_needs()
+	update_configuration_warnings()
+
+
 func _get_configuration_warnings():
 	var warnings = []
 	# print(len(needs))
@@ -30,23 +56,3 @@ func _get_configuration_warnings():
 
 	# Returning an empty array means "no warning".
 	return warnings
-
-func set_needs():
-	print("Before", needs)
-	var found_needs = find_children("*", "Need") as Array[Need]
-	for need in found_needs:
-		if need not in needs:
-			needs.append(need)
-	print(needs)
-
-func _on_children_entered(node: Node):
-	if node is Need:
-		needs.append(node)
-	set_needs()
-	update_configuration_warnings()
-
-func _on_children_exited(node: Node):
-	if node in needs:
-		needs.erase(node)
-	# set_needs()
-	update_configuration_warnings()

@@ -1,7 +1,13 @@
 extends Statistic
 class_name IntegerStat
 
-@export var value: int 
+@export var value:int:
+	set(new_value):
+		var old_value = value
+		if value != new_value:
+			value = new_value
+			signal_change(old_value, value ) 
+			
 @export var MIN_VALUE: int = 0
 @export var MAX_VALUE: int = 10
 

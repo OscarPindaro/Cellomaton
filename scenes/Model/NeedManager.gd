@@ -28,13 +28,17 @@ func _ready():
 	assert(stat_node != null)
 	# connect only while playing
 	if not Engine.is_editor_hint():
-		stat_node.statistic_changed.connect(_on_statistic_change)
+		pass
+	print(stat_node is Statistic)
+	var a: Statistic= stat_node as Statistic
+	a.statistic_changed.connect(_on_statistic_change)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	stat_node = stat_node as FloatStat
 
 func _on_statistic_change(old_value, new_value):
+	print("hello")
 	need_node.value = new_value
 
 func _get_configuration_warnings():

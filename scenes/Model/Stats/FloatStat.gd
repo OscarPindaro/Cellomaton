@@ -1,7 +1,13 @@
 extends Statistic
 class_name FloatStat
 
-@export var value:float 
+@export var value:float:
+	set(new_value):
+		var old_value = value
+		if value != new_value:
+			value = new_value
+			signal_change(old_value, value ) 
+
 @export var MIN_VALUE:float = 0.
 @export var MAX_VALUE:float = 10.
 
