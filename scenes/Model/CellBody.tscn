@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dvdckygrhbdv8"]
+[gd_scene load_steps=7 format=3 uid="uid://dvdckygrhbdv8"]
 
 [ext_resource type="Script" path="res://scenes/Model/CellBody.gd" id="1_haljs"]
 [ext_resource type="Texture2D" uid="uid://bjot4ukk4eycb" path="res://icon.svg" id="1_yfsi2"]
-[ext_resource type="Resource" uid="uid://roefuqaslc5y" path="res://scenes/Model/base_stats.tres" id="2_la3jl"]
+[ext_resource type="Resource" uid="uid://roefuqaslc5y" path="res://scenes/Model/base_stats.tres" id="2_fn5cm"]
+[ext_resource type="Script" path="res://scenes/Model/Stats/FloatStat.gd" id="4_5l2b1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ufrm"]
 size = Vector2(60.8449, 61.8174)
@@ -16,7 +17,7 @@ scale = Vector2(0.999981, 0.999981)
 collision_mask = 2
 velocity = Vector2(-57.5993, -191.526)
 script = ExtResource("1_haljs")
-starting_stats = ExtResource("2_la3jl")
+starting_stats = ExtResource("2_fn5cm")
 
 [node name="Icon" type="Sprite2D" parent="."]
 rotation = 1.5708
@@ -25,7 +26,6 @@ texture = ExtResource("1_yfsi2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.424695, -0.0615719)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_8ufrm")
 
 [node name="Vision" type="Area2D" parent="."]
@@ -35,3 +35,8 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Vision"]
 shape = SubResource("CircleShape2D_b83md")
 debug_color = Color(0.827451, 0, 0.94902, 0.419608)
+
+[node name="Stats" type="Node" parent="."]
+
+[node name="Energy" type="Node" parent="Stats"]
+script = ExtResource("4_5l2b1")

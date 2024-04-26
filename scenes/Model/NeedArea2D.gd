@@ -1,12 +1,16 @@
 extends Area2D
 class_name NeedArea2D
-
-@export var need_resource: NeedsResource
+# var needs: Array[Need] = []
+var needs: Array= []
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	var needs = find_children("*", "Need") as Array[Need]
+	# for need in needs:
+	# 	need = need as Need
+	print(needs)
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -1,18 +1,12 @@
-extends Node2D
+extends Node
+class_name Need
 
-@export var MAX_HEALTH: float = 100.
-@export var MAX_ENERGY: float = 100.
-
-var health: float 
-var energy: float
-
-
-
+@export var need_name: String
+@export var value: int 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	health = MAX_HEALTH
-	energy = MAX_ENERGY
+	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
