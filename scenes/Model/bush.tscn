@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dhsjtgyyyftb8"]
+[gd_scene load_steps=7 format=3 uid="uid://dhsjtgyyyftb8"]
 
 [ext_resource type="Texture2D" uid="uid://ck605h4fpeo1n" path="res://asset/World/Bush.png" id="1_syevy"]
 [ext_resource type="Script" path="res://scenes/Model/NeedArea2D.gd" id="2_mmorm"]
-[ext_resource type="Script" path="res://scenes/Model/Needs/Need.gd" id="3_6xju4"]
 [ext_resource type="Script" path="res://scenes/Model/Stats/FloatStat.gd" id="5_gj60a"]
 [ext_resource type="Script" path="res://scenes/Model/NeedManager.gd" id="6_k6p6v"]
 
@@ -28,21 +27,11 @@ script = ExtResource("2_mmorm")
 shape = SubResource("CircleShape2D_u77yd")
 debug_color = Color(0.945098, 0.211765, 0.243137, 0.419608)
 
-[node name="Shadow" type="Node" parent="NeedArea2D"]
-script = ExtResource("3_6xju4")
-need_name = "Shadow"
-value = 10
-
-[node name="Health" type="Node" parent="NeedArea2D"]
-script = ExtResource("3_6xju4")
-need_name = "Health"
-
 [node name="Stats" type="Node" parent="."]
 
 [node name="Food" type="Node" parent="Stats"]
 script = ExtResource("5_gj60a")
 
-[node name="HealthNeedManager" type="Node" parent="."]
+[node name="HealthNeedManager" type="Node" parent="." node_paths=PackedStringArray("stat_node")]
 script = ExtResource("6_k6p6v")
-need_path = NodePath("../NeedArea2D/Health")
-stat_path = NodePath("../Stats/Food")
+stat_node = NodePath("../Stats/Food")
