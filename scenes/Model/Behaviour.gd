@@ -3,6 +3,8 @@ extends Node
 @export var body: CharacterBody2D
 # TODO this is very temporary!!
 @export var energy: FloatStat 
+@export var exploration: FloatStat
+
 
 # how often the controller changes action
 @export var control_step: float = 1
@@ -20,6 +22,14 @@ var current_movement: Movement
 var possible_targets: Array[NeedArea2D] = []
 var target: NeedArea2D = null
 
+# curves
+@export var energy_curve: Curve
+@export var exploration_curve: Curve
+
+# using a simple boolean instead of state machine
+var exploring: bool = true
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	assert(body != null, "Body can't be null")
@@ -29,6 +39,10 @@ func _ready():
 	# movement
 	random_movement = RandomMovement.new()
 	random_movement.name = "RandomMovement"
+	random_movement.control_step = 0.2
+	random_movement.body = body
+	random_movement.look_at = true
+
 	target_movement = FollowMovement.new()
 	target_movement.name = "TargetMovement"
 	current_movement = random_movement
@@ -53,18 +67,45 @@ func _create_timer():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+
+	# MOVEMENT IS NOT WORKING BECAUSE IT'S NOT IN THE TREE
 	current_movement.move(delta, body)
+	if exploring:
+		exploration.increment(0.005)
+		energy.decrement(0.0002)
+	else:
+		exploration.decrement(0.005)
+		energy.increment(0.02)
+	# print(body.velocity)
+
 
 func act():
 	# no targets, behave randomly
+	print("Energy:", self.energy.value)
+	print("Exploration:", self.exploration.value)
+	print("Exploring:", exploring)
+	print("Speed:", body.velocity)
 	if len(possible_targets) == 0:
+		exploring = true
 		target = null
 		current_movement = random_movement
 	else:
 		target = possible_targets.pick_random()
-		remove_child(current_movement)
-		current_movement = target_movement
-		target_movement.target = target
+		# super hardcode, maybe is better to have justa  dictionary with values?
+		var energy_need_value: float = target.get_needs()[0]["value"]
+		var energy_mult = energy_curve.sample(self.energy.value/self.energy.MAX_VALUE)
+
+		var energy_utility = energy_need_value*energy_mult
+		var exploration_utility = 1. * exploration_curve.sample(self.exploration.value/self.exploration.MAX_VALUE)
+		# print("Energy Utiliy:", energy_utility)
+		# print("Explo Utiliy:", exploration_utility)
+		if energy_utility > exploration_utility:
+			exploring = false
+			current_movement = target_movement
+			target_movement.target = target
+		else:
+			exploring = true
+			current_movement = random_movement
 	print("Current movement: ", current_movement)
 
 func on_vision_cone_entered(area: Area2D):

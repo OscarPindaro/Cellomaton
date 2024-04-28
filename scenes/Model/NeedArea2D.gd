@@ -22,7 +22,7 @@ func _ready():
 func _process(delta):
 	pass
 
-func get_needs()-> Array[Dictionary]:
+func get_needs()-> Array:
 	var needs_array = []
 	for need in needs:
 		need = need as Need

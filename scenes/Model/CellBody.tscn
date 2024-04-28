@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dvdckygrhbdv8"]
+[gd_scene load_steps=8 format=3 uid="uid://dvdckygrhbdv8"]
 
 [ext_resource type="Texture2D" uid="uid://bjot4ukk4eycb" path="res://icon.svg" id="1_yfsi2"]
 [ext_resource type="Script" path="res://scenes/Model/Stats/FloatStat.gd" id="4_5l2b1"]
@@ -9,6 +9,14 @@ size = Vector2(60.8449, 61.8174)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b83md"]
 radius = 116.18
+
+[sub_resource type="Curve" id="Curve_50iay"]
+_data = [Vector2(0, 1), 0.0, -1.0, 0, 1, Vector2(1, 0), -1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_686cy"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.24695, 0.0, 0, 0]
+point_count = 2
 
 [node name="CellBody" type="CharacterBody2D"]
 rotation = -1.55711
@@ -37,9 +45,17 @@ debug_color = Color(0.827451, 0, 0.94902, 0.419608)
 
 [node name="Energy" type="Node" parent="Stats"]
 script = ExtResource("4_5l2b1")
+value = 5.0
 
-[node name="Behaviour" type="Node" parent="." node_paths=PackedStringArray("body", "energy", "need_vision_cone")]
+[node name="Exploration" type="Node" parent="Stats"]
+script = ExtResource("4_5l2b1")
+value = 5.0
+
+[node name="Behaviour" type="Node" parent="." node_paths=PackedStringArray("body", "energy", "exploration", "need_vision_cone")]
 script = ExtResource("5_7no7a")
 body = NodePath("..")
 energy = NodePath("../Stats/Energy")
+exploration = NodePath("../Stats/Exploration")
 need_vision_cone = NodePath("../Vision")
+energy_curve = SubResource("Curve_50iay")
+exploration_curve = SubResource("Curve_686cy")
