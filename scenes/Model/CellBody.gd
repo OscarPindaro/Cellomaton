@@ -1,11 +1,6 @@
 @tool
 extends CharacterBody2D
 
-@export var starting_stats: BaseStats
-
-var health: float
-var energy: float
-
 @onready
 var random_movement: RandomMovement = RandomMovement.new()
 @onready
