@@ -39,8 +39,6 @@ func _ready():
 func _on_control_step():
 	body.velocity = Vector2(randf_range(-1,1), randf_range(-1,1)).normalized() * linear_velocity
 
-func _process(_delta):
-	move(_delta, body)
 
 func move(_delta, body_to_move: CharacterBody2D):
 	body_to_move.move_and_slide()
