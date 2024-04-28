@@ -17,4 +17,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	move(body)
+
+func move(_body_to_move: CharacterBody2D):
 	pass
