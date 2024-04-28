@@ -8,9 +8,9 @@ func _ready():
 	super._ready()
 
 func _process(_delta):
-	move(body)
+	move(_delta, body)
 
-func move(body_to_move: CharacterBody2D):
+func move(_delta, body_to_move: CharacterBody2D):
 	if target != null:
 		var direction : Vector2 = (target.global_position - body_to_move.position).normalized()
 		body_to_move.velocity = direction*linear_velocity
