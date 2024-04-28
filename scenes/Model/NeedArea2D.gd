@@ -36,16 +36,18 @@ func set_needs():
 			needs.append(need)
 
 func _on_children_entered(node: Node):
-	if node is Need:
-		needs.append(node)
-		set_needs()
-	update_configuration_warnings()
+	if Engine.is_editor_hint():
+		if node is Need:
+			needs.append(node)
+			set_needs()
+		update_configuration_warnings()
 
 func _on_children_exited(node: Node):
-	if node in needs:
-		needs.erase(node)
-	# set_needs()
-	update_configuration_warnings()
+	if Engine.is_editor_hint():
+		if node in needs:
+			needs.erase(node)
+		# set_needs()
+		update_configuration_warnings()
 
 
 func _get_configuration_warnings():
