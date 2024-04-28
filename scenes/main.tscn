@@ -19,29 +19,25 @@ position = Vector2(14, 314)
 collision_layer = 2
 
 [node name="bush2" parent="." instance=ExtResource("3_6e4so")]
-position = Vector2(547, 638)
+position = Vector2(850, 458)
 collision_layer = 2
 
 [node name="bush3" parent="." instance=ExtResource("3_6e4so")]
-position = Vector2(1090, 329)
+position = Vector2(576, 603)
 collision_layer = 2
 
 [node name="bush4" parent="." instance=ExtResource("3_6e4so")]
-position = Vector2(565, 4)
+position = Vector2(186, 492)
 collision_layer = 2
 
 [node name="bush5" parent="." instance=ExtResource("3_6e4so")]
-position = Vector2(209, 650)
+position = Vector2(815, 264)
 collision_layer = 2
 
 [node name="bush6" parent="." instance=ExtResource("3_6e4so")]
-position = Vector2(942, 15)
-collision_layer = 2
-
-[node name="bush8" parent="." instance=ExtResource("3_6e4so")]
-position = Vector2(903, 640)
+position = Vector2(631, 161)
 collision_layer = 2
 
 [node name="bush7" parent="." instance=ExtResource("3_6e4so")]
-position = Vector2(187, 11)
+position = Vector2(385, 163)
 collision_layer = 2
